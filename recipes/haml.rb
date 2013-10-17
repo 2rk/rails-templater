@@ -1,5 +1,3 @@
-gem 'haml'
-
 remove_file 'app/views/layouts/application.html.erb'
 create_file 'app/views/layouts/application.html.haml', load_template('app/views/layouts/application.html.haml','haml')
 create_file 'lib/templates/haml/scaffold/_form.html.haml', load_template('scaffold/_form.html.haml','haml')
