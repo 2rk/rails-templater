@@ -10,4 +10,7 @@ create_file 'lib/templates/rails/rspec/scaffold/routing_spec.rb', load_template(
 stategies << lambda do
   generate 'rspec:install'
   spec_helper_path = 'spec/spec_helper.rb'
+  run 'mkdir spec/support'
+  run 'touch spec/support/common_lets.rb'
+  create_file 'spec/support/assign_to_matcher.rb', load_template('support/assign_to_matcher.rb','rspec')
 end
