@@ -1,4 +1,4 @@
-gem 'rspec-rails', '~> 2.14.0', group: [:development, :test]
+gem 'rspec-rails', '>= 2.14.0', group: [:development, :test]
 
 # load rspec templates
 create_file 'lib/templates/rails/rspec/helper/helper_spec.rb', load_template('helper/helper_spec.rb','rspec')

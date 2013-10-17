@@ -5,7 +5,7 @@ initialize_templater
 #Create Gemspec 
 create_file ".rvmrc", "rvm gemset use #{app_name}"
 
-required_recipes = %w(default haml rspec factory_girl)
+required_recipes = %w(default haml rspec factory_girl shoulda capybara)
 required_recipes.each {|required_recipe| apply recipe(required_recipe)}
 
 load_options

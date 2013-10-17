@@ -1,4 +1,4 @@
-gem 'factory_girl_rails', '~> 4.2.1', group: [:development, :test]
+gem 'factory_girl_rails', '>= 4.2.1', group: [:development, :test]
 
 stategies << lambda do
   # load factory girl syntax methods as part of rspec
