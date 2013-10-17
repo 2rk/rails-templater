@@ -1,0 +1,1 @@
+ENV["FIXTURES_PATH"] ||= 'spec/fixtures'

@@ -12,7 +12,6 @@ git :init
 
 append_file '.gitignore', load_template('gitignore','git')
 
-
 #haml stuff has moved out of rails3-generators
 gem 'haml-rails'
 
