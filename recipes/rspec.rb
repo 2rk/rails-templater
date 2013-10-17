@@ -7,7 +7,7 @@ create_file 'lib/templates/rails/rspec/model/model_spec.rb', load_template('mode
 create_file 'lib/templates/rails/rspec/scaffold/controller_spec.rb', load_template('scaffold/controller_spec.rb','rspec')
 create_file 'lib/templates/rails/rspec/scaffold/routing_spec.rb', load_template('scaffold/routing_spec.rb','rspec')
 
-stategies << lambda do
+strategies << lambda do
   generate 'rspec:install'
   spec_helper_path = 'spec/spec_helper.rb'
   run 'mkdir spec/support'
