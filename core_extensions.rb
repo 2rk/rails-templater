@@ -3,11 +3,9 @@ module Rails
     module Actions
 
       attr_accessor :strategies
-      attr_reader :template_options
 
       def initialize_templater
         @strategies = []
-        @template_options = {}
       end
       
       def execute_strategies
