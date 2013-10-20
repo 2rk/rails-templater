@@ -17,8 +17,8 @@ execute_strategies
 
 generators_configuration = <<-END
 config.generators do |g|
-  g.view_specs false
-end
+      g.view_specs false
+    end
 END
 
 inside app_name do
