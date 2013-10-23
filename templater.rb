@@ -13,6 +13,10 @@ inside app_name do
   run 'bundle install'
 end
 
+inside app_name do
+  run 'rake db:create:all'
+end
+
 execute_strategies
 
 generators_configuration = <<-END
@@ -21,12 +25,11 @@ config.generators do |g|
     end
 END
 
-inside app_name do
-  run 'rake db:create:all'
-end
-
-
 environment generators_configuration
 
+run 'cp .rvmrc .rvmrc.example'
+run 'cp config/database.yml config/database.yml.example'
+
+
 git :add => "."
-git :commit => "-m 'Initial commit'"  
+git :commit => "-m 'Initial commit'"
