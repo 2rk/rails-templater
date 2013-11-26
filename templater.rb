@@ -1,5 +1,3 @@
-require File.join(File.dirname(__FILE__), 'core_extensions.rb')
-
 #Create Gemspec
 create_file ".rvmrc", "rvm use 2.0.0-p247@#{app_name} --create"
 
