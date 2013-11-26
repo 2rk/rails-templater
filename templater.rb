@@ -1,5 +1,5 @@
 #Create Gemspec
-create_file ".rvmrc.example", "rvm use 2.0.0-p247@#{app_name} --create"
+create_file ".rvmrc", "rvm use 2.0.0-p247@#{app_name} --create"
 # Delete all unnecessary files
 remove_file "README"
 remove_file "public/index.html"
