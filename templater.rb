@@ -671,7 +671,6 @@ EOF
 
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Capybara::DSL\n", after: "RSpec.configure do |config|\n"
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include FactoryGirl::Syntax::Methods\n", after: "RSpec.configure do |config|\n"
-execute_strategies
 
 generators_configuration = <<-END
 config.generators do |g|
