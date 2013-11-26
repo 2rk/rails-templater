@@ -1,21 +1,71 @@
 #Create Gemspec
 create_file ".rvmrc", "rvm use 2.0.0-p247@#{app_name} --create"
-
+copy_file  ".rvmrc", ".rvmrc.example"
 
 # Delete all unnecessary files
 remove_file "README"
 remove_file "public/index.html"
 remove_file "public/robots.txt"
 remove_file "public/images/rails.png"
+remove_file "config/database.yml"
 
 create_file 'README'
 create_file 'log/.gitkeep'
 create_file 'tmp/.gitkeep'
 
+# db stuffs
+create_file "config/database.yml", <<EOF
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MYSQL driver
+#   gem install mysql2
+#
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: #{app_name}_development
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: #{app_name}_test
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: #{app_name}_production
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+EOF
+
+copy_file  ".config/database.yml", ".config/database.yml.example"
+
 git :init
 
 ## GEMFILE STUFF
 gem 'haml-rails'
+gem 'mysql2'
 
 gem_group :development, :test do
   gem 'awesome_print'
@@ -619,7 +669,6 @@ tmp/restart.txt
 /tmp
 EOF
 # End .gitignore
-
 
 ## Gem specific Injections
 
