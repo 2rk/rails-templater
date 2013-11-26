@@ -641,7 +641,7 @@ EOF
 
 # Start Fracture
 append_file 'config/boot.rb', <<EOF
-  ENV["FIXTURES_PATH"] ||= 'spec/fixtures'
+ENV["FIXTURES_PATH"] ||= 'spec/fixtures'
 EOF
 # END Fracture
 
