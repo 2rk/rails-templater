@@ -1,7 +1,6 @@
 #Create Gemspec
+create_file ".rvmrc.example", "rvm use 2.0.0-p247@#{app_name} --create"
 create_file ".rvmrc", "rvm use 2.0.0-p247@#{app_name} --create"
-copy_file  ".rvmrc", ".rvmrc.example"
-
 # Delete all unnecessary files
 remove_file "README"
 remove_file "public/index.html"
@@ -14,7 +13,7 @@ create_file 'log/.gitkeep'
 create_file 'tmp/.gitkeep'
 
 # db stuffs
-create_file "config/database.yml", <<EOF
+db_string = <<EOF
 # MySQL.  Versions 4.1 and 5.0 are recommended.
 #
 # Install the MYSQL driver
@@ -58,8 +57,8 @@ production:
   password:
   socket: /tmp/mysql.sock
 EOF
-
-copy_file  ".config/database.yml", ".config/database.yml.example"
+create_file "config/database.yml.example", db_string
+create_file "config/database.yml", db_string
 
 git :init
 
