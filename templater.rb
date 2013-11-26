@@ -1,6 +1,5 @@
 #Create Gemspec
 create_file ".rvmrc.example", "rvm use 2.0.0-p247@#{app_name} --create"
-create_file ".rvmrc", "rvm use 2.0.0-p247@#{app_name} --create"
 # Delete all unnecessary files
 remove_file "README"
 remove_file "public/index.html"
@@ -57,7 +56,6 @@ production:
   password:
   socket: /tmp/mysql.sock
 EOF
-create_file "config/database.yml.example", db_string
 create_file "config/database.yml", db_string
 
 git :init
@@ -673,6 +671,7 @@ EOF
 
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Capybara::DSL\n", after: "RSpec.configure do |config|\n"
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include FactoryGirl::Syntax::Methods\n", after: "RSpec.configure do |config|\n"
+execute_strategies
 
 generators_configuration = <<-END
 config.generators do |g|
@@ -682,5 +681,8 @@ END
 
 environment generators_configuration
 
+run 'cp .rvmrc .rvmrc.example'
+run 'cp config/database.yml config/database.yml.example'
+
 git :add => "."
-git :commit => "-m 'Initial commit'"  
+git :commit => "-m 'Initial commit'"
