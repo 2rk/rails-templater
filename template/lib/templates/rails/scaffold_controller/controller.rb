@@ -34,17 +34,17 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
 
     if @<%= orm_instance.update_attributes("params[:#{singular_table_name}]") %>
-          redirect_to <%= singular_table_name %>_path(@<%= singular_table_name %>), <%= key_value :notice, "'#{human_name} was successfully updated.'" %>
+      redirect_to <%= singular_table_name %>_path(@<%= singular_table_name %>), <%= key_value :notice, "'#{human_name} was successfully updated.'" %>
     else
       render <%= key_value :action, "'edit'" %>
     end
    end
 
-def destroy
-  @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+  def destroy
+    @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
     @<%= orm_instance.destroy %>
 
     redirect_to <%= index_helper %>_path
-end
+  end
 end
 <% end -%>
