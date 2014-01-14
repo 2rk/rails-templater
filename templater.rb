@@ -143,7 +143,13 @@ EOF
 generate 'rspec:install'
 spec_helper_path = 'spec/spec_helper.rb'
 run 'mkdir spec/support'
-run 'touch spec/support/common_lets.rb'
+create_file 'touch spec/support/common_lets.rb', <<EOF
+def common_lets
+  # For example:
+  # let(:user) { create(:user) }
+end
+EOF
+
 create_file 'spec/support/assign_to_matcher.rb', <<EOF
 require 'active_support/deprecation'
 
@@ -565,21 +571,21 @@ create_file 'app/views/layouts/application.html.haml', <<EOF
   = javascript_include_tag :defaults
 EOF
 create_file 'lib/templates/haml/scaffold/_form.html.haml', <<EOF
-  = form_for @<%= singular_table_name %> do |f|
-    - if @<%= singular_table_name %>.errors.any?
-      #error_explanation
-        %h2= "\#{pluralize(@<%= singular_table_name %>.errors.count, 'error')} prohibited this <%= singular_table_name %> from being saved:"
-        %ul
-          - @<%= singular_table_name %>.errors.full_messages.each do |msg|
-            %li= msg
+= form_for @<%= singular_table_name %> do |f|
+  - if @<%= singular_table_name %>.errors.any?
+    #error_explanation
+      %h2= "\#{pluralize(@<%= singular_table_name %>.errors.count, 'error')} prohibited this <%= singular_table_name %> from being saved:"
+      %ul
+        - @<%= singular_table_name %>.errors.full_messages.each do |msg|
+          %li= msg
 
-    <% for attribute in attributes -%>
-      .field
-        = f.label :<%= attribute.name %>
-        = f.<%= attribute.field_type %> :<%= attribute.name %>
-    <% end -%>
-      .actions
-        = f.submit 'Save'
+  <% for attribute in attributes -%>
+    .field
+      = f.label :<%= attribute.name %>
+      = f.<%= attribute.field_type %> :<%= attribute.name %>
+  <% end -%>
+    .actions
+      = f.submit 'Save'
 EOF
 
 create_file 'lib/templates/haml/scaffold/edit.html.haml', <<EOF
@@ -624,9 +630,9 @@ create_file 'lib/templates/haml/scaffold/show.html.haml', <<EOF
 %p#notice= notice
 
 <% for attribute in attributes -%>
-  %p
-    %b <%= attribute.human_name %>:
-    = @<%= singular_table_name %>.<%= attribute.name %>
+%p
+  %b <%= attribute.human_name %>:
+  = @<%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
 = link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), id: :edit_<%= singular_table_name %>_link
 EOF
