@@ -76,6 +76,7 @@ gem_group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 2.4.0'
   gem 'timecop'
+  gem 'zeus', '~> 0.13.4.pre', :require => false
 end
 
 
