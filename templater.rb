@@ -65,6 +65,7 @@ git :init
 ## GEMFILE STUFF
 gem 'haml-rails'
 gem 'mysql2'
+gem 'selections', '~> 0.1.13'
 
 gem_group :development, :test do
   gem 'awesome_print'
