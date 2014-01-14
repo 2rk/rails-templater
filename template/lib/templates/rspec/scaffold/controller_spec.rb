@@ -5,7 +5,7 @@ describe <%= controller_class_name %>Controller do
   render_views
   common_lets
 
-  before :from_db2 do
+  before :all do
     Fracture.define_selector :new_<%= file_name %>_link
     Fracture.define_selector :cancel_new_<%= file_name %>_link
     Fracture.define_selector :edit_<%= file_name %>_link
