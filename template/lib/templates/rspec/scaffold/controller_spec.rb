@@ -13,7 +13,7 @@ describe <%= controller_class_name %>Controller do
   end
 
   context 'not logged in' do
-    before { sign_out user }
+    before { sign_out :user }
 
     {index: :get, show: :get, new: :get, create: :post, edit: :get, update: :put, destroy: :delete}.each do |v, m|
       it "#{m} #{v} should logout" do
