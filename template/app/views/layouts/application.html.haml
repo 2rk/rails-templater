@@ -1,9 +1,17 @@
 !!! 5
 %html
-%head
-  = csrf_meta_tag
-  /[if lt IE 9]
-    = javascript_include_tag 'html5'
-%body
-  = yield
-  = javascript_include_tag :defaults
+  %head
+    = csrf_meta_tag
+    = javascript_include_tag :application
+    = stylesheet_link_tag :application, media: 'all'
+
+    /[if lt IE 9]
+      = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js'
+  %body
+    = render 'navigation'
+    .container
+      - if alert
+        %p.alert= alert
+      - if notice
+        %p.notice= notice
+      = yield
