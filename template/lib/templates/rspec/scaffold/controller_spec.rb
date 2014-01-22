@@ -34,7 +34,7 @@ describe <%= controller_class_name %>Controller do
         get :index
       end
 
-      it { should assign_to(:<%= table_name %>).with([<%= file_name %>]) }
+      it { should assign_to(:<%= table_name %>).with_items([<%= file_name %>]) }
       it { should render_template :index }
       it { should have_only_fractures(:new_<%= file_name %>_link) }
     end
