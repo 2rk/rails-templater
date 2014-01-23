@@ -1,4 +1,4 @@
-= form_for @<%= singular_table_name %> do |f|
+= form_for @<%= singular_table_name %>, html: { role="form", class: "form-horizontal"} do |f|
   - if @<%= singular_table_name %>.errors.any?
     #error_explanation
       %h2= "#{pluralize(@<%= singular_table_name %>.errors.count, 'error')} prohibited this <%= singular_table_name %> from being saved:"
@@ -7,9 +7,11 @@
           %li= msg
 
 <% for attribute in attributes -%>
-  .field
-    = f.label :<%= attribute.name %>
-    = f.<%= attribute.field_type %> :<%= attribute.name %>
+  .form-group
+    = f.label :<%= attribute.name %>, class: 'col-md-2 control-label'
+    .col-md-6
+      = f.<%= attribute.field_type %> :<%= attribute.name %>, class: 'form-control input-sm'
 <% end -%>
-  .actions
-    = f.submit 'Save'
+  .form-group
+    .col-md-6.col-md-offset-2
+      = f.submit 'Save', class: 'btn btn-success btn-sm'

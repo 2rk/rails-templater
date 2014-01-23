@@ -1,23 +1,26 @@
-%h1 Listing <%= plural_table_name %>
+.page-header
+  %h1 Listing <%= plural_table_name %>
 
-%table
-  %tr
-<% for attribute in attributes -%>
-    %th <%= attribute.human_name %>
-<% end -%>
+.row
+  .col-md-12
+    %table.table.table-striped
+      %tr
+    <% for attribute in attributes -%>
+        %th <%= attribute.human_name %>
+    <% end -%>
 
-  - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
-    %tr
-<% @first = true -%>
-<% for attribute in attributes -%>
-<% if @first -%>
-<% @first = false -%>
-      %td= link_to <%= singular_table_name %>.<%= attribute.name %>, <%= singular_table_name %>_path(<%= singular_table_name %>)
-<% else -%>
-      %td= <%= singular_table_name %>.<%= attribute.name %>
-<% end -%>
-<% end -%>
+      - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+        %tr
+    <% @first = true -%>
+    <% for attribute in attributes -%>
+    <% if @first -%>
+    <% @first = false -%>
+          %td= link_to <%= singular_table_name %>.<%= attribute.name %>, <%= singular_table_name %>_path(<%= singular_table_name %>)
+    <% else -%>
+          %td= <%= singular_table_name %>.<%= attribute.name %>
+    <% end -%>
+    <% end -%>
 
-%br
+    %br
 
-= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, id: :new_<%= singular_table_name %>_link
+    = link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, id: :new_<%= singular_table_name %>_link, class: 'btn btn-primary btn-sm'
