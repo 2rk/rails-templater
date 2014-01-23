@@ -11,10 +11,6 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :scm, 'git'
 #set :repository, 'git@github.com:2rk/pwi.git'
-set :whenever_environment, defer { stage }
-set :whenever_variables, defer { "'environment=#{rails_env}&log_path=#{shared_path}'" }
-
-set :whenever_identifier, defer { "#{application}_#{stage}" }
 
 namespace :deploy do
   task :symlink_config do

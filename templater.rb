@@ -5,9 +5,6 @@ initialize_templater
 create_file ".rvmrc", "rvm use 2.0.0@#{app_name} --create" unless ENV['SKIP_RVMRC']
 create_file ".ruby-version", "2.0.0"
 
-
-
-
 # Delete all unnecessary files
 remove_file "README"
 remove_file "public/index.html"
@@ -73,6 +70,13 @@ gem 'haml-rails'
 gem 'mysql2'
 gem 'selections', '~> 0.1.13'
 
+gem 'capistrano', '~> 2.0'
+gem 'rvm-capistrano', '~> 1.4.4'
+
+gem_group :assets do
+  gem 'bootstrap-sass'
+end
+
 gem_group :development, :test do
   gem 'awesome_print'
   gem 'capybara'
@@ -85,7 +89,6 @@ gem_group :development, :test do
   gem 'timecop'
   gem 'zeus', '~> 0.13.4.pre', :require => false
 end
-
 
 
 inside app_name do
@@ -106,7 +109,6 @@ end
 ## RSpec all the things
 
 generate 'rspec:install'
-spec_helper_path = 'spec/spec_helper.rb'
 run 'mkdir spec/support'
 
 ## END RSpec
