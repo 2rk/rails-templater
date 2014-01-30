@@ -73,6 +73,9 @@ gem 'selections', '~> 0.1.13'
 gem 'capistrano', '~> 2.0'
 gem 'rvm-capistrano', '~> 1.4.4'
 
+gem 'devise'
+gem 'cancan'
+
 gem_group :assets do
   gem 'bootstrap-sass'
 end
