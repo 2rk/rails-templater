@@ -125,6 +125,12 @@ Haml::Template.options[:format] = :html5
 EOF
 
 # END haml
+# Start devise
+
+generate 'devise:install'
+
+# start can can
+generate 'cancan:ability'
 
 
 # Start Fracture
