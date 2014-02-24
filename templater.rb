@@ -161,6 +161,19 @@ tmp/restart.txt
 EOF
 # End .gitignore
 
+
+# Start application.css.scss
+copy_file 'app/assets/stylesheets/application.css', 'app/assets/stylesheets/application.css.scss'
+
+append_file 'app/assets/stylesheets/application.css.scss' , <<-EOF
+ @import "bootstrap";
+ @import "bootstrap/theme";
+EOF
+
+remove_file 'app/assets/stylesheets/application.css'
+
+# End
+
 ## Gem specific Injections
 
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Capybara::DSL\n", after: "RSpec.configure do |config|\n"
