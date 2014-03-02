@@ -178,6 +178,10 @@ remove_file 'app/assets/stylesheets/application.css'
 
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Capybara::DSL\n", after: "RSpec.configure do |config|\n"
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include FactoryGirl::Syntax::Methods\n", after: "RSpec.configure do |config|\n"
+inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Devise::TestHelpers, :type => :controllers\n", after: "RSpec.configure do |config|\n"
+inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include LogCanCanErrors, :type => :controller\n", after: "RSpec.configure do |config|\n"
+inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include RequestAdditions, :type => :request\n", after: "RSpec.configure do |config|\n"
+comment_lines 'spec/spec_helper.rb', /\'rspec\/autorun\'/
 
 generators_configuration = <<-END
 config.generators do |g|
