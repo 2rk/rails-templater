@@ -176,6 +176,11 @@ EOF
 remove_file 'app/assets/stylesheets/application.css'
 
 # End
+# Start application.js
+
+inject_into_file 'app/assets/javascripts/application.js', "\n//= require bootstrap\n", after: "//= require jquery_ujs"
+
+# End
 
 ## Gem specific Injections
 

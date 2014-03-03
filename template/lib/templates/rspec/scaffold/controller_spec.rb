@@ -29,8 +29,7 @@ describe <%= controller_class_name %>Controller do
 <% unless options[:singleton] -%>
     describe 'GET index' do
       before do
-        <%= file_name %>
-        <%= file_name %>_other
+        <%= file_name %>; <%= file_name %>_other
         get :index
       end
 
