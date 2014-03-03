@@ -132,6 +132,9 @@ generate 'devise:install'
 # start can can
 generate 'cancan:ability'
 
+# start selections
+
+generate 'selections_scaffold'
 
 # Start Fracture
 append_file 'config/boot.rb', <<-EOF
@@ -181,6 +184,7 @@ inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include FactoryGirl::Synta
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Devise::TestHelpers, :type => :controllers\n", after: "RSpec.configure do |config|\n"
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include LogCanCanErrors, :type => :controller\n", after: "RSpec.configure do |config|\n"
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include RequestAdditions, :type => :request\n", after: "RSpec.configure do |config|\n"
+append_file 'db/seeds.rb', "\n\s\sRake::Task['db:fixtures:load'].invoke\n"
 comment_lines 'spec/spec_helper.rb', /\'rspec\/autorun\'/
 
 generators_configuration = <<-END
