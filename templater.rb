@@ -68,7 +68,7 @@ git :init
 ## GEMFILE STUFF
 gem 'haml-rails'
 gem 'mysql2'
-gem 'selections', '~> 0.1.13'
+gem 'selections', '~> 0.2.2'
 
 gem 'capistrano', '~> 2.0'
 gem 'rvm-capistrano', '~> 1.4.4'
