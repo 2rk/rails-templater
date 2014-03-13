@@ -93,7 +93,6 @@ gem_group :development, :test do
   gem 'zeus', '~> 0.13.4.pre', :require => false
 end
 
-
 inside app_name do
   run 'bundle install'
 end
