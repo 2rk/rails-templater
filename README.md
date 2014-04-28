@@ -4,6 +4,10 @@
 
 `rails new app_name -m ~/rails-templater/templater.rb`
 
+If you have rails 4 installed, this template creates a rails 3 app, so you will need to do:
+
+`rails _3.2.17 new app_name -m ~/rails-templater/templater.rb`
+
 ## What it gives you
 * mysql
 * haml
