@@ -2,7 +2,6 @@ require File.join(File.dirname(__FILE__), 'core_extensions.rb')
 initialize_templater
 
 #Create Gemspec
-create_file ".rvmrc", "rvm use 2.1.1@#{app_name} --create" unless ENV['SKIP_RVMRC']
 create_file ".ruby-version", "2.1.1"
 
 # Delete all unnecessary files
