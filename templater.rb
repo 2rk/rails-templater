@@ -2,8 +2,8 @@ require File.join(File.dirname(__FILE__), 'core_extensions.rb')
 initialize_templater
 
 #Create Gemspec
-create_file ".rvmrc", "rvm use 2.0.0@#{app_name} --create" unless ENV['SKIP_RVMRC']
-create_file ".ruby-version", "2.0.0"
+create_file ".rvmrc", "rvm use 2.1.1@#{app_name} --create" unless ENV['SKIP_RVMRC']
+create_file ".ruby-version", "2.1.1"
 
 # Delete all unnecessary files
 remove_file "README"
@@ -202,7 +202,6 @@ environment generators_configuration
 required_recipes = %w(capistrano)
 required_recipes.each {|required_recipe| apply recipe(required_recipe)}
 
-run 'cp .rvmrc .rvmrc.example'
 run 'cp config/database.yml config/database.yml.example'
 run 'cp config/environments/development.rb config/environments/integ.rb'
 run 'cp config/environments/development.rb config/environments/uat.rb'
