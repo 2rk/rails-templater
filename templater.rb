@@ -199,7 +199,7 @@ END
 
 environment generators_configuration
 
-required_recipes = %w(capistrano)
+required_recipes = %w(capistrano spec_ext)
 required_recipes.each {|required_recipe| apply recipe(required_recipe)}
 
 run 'cp config/database.yml config/database.yml.example'
