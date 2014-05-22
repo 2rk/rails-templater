@@ -68,7 +68,7 @@ git :init
 ## GEMFILE STUFF
 gem 'haml-rails'
 gem 'mysql2'
-gem 'selections', '~> 0.2.2'
+#gem 'selections', '~> 0.2.2'
 
 gem 'capistrano', '~> 2.0'
 gem 'rvm-capistrano', '~> 1.4.4'
@@ -78,15 +78,17 @@ gem 'cancan'
 
 gem 'bootstrap-sass'
 
+gem 'kitestrings', :path => "~/personal/kitestrings"
+
 gem_group :development, :test do
   gem 'awesome_print'
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'fracture'
+  #gem 'fracture'
   gem 'database_cleaner'
   gem 'hirb'
   gem 'rspec-rails'
-  gem 'shoulda-matchers', '~> 2.4.0'
+  gem 'shoulda-matchers'
   gem 'timecop'
   gem 'zeus', '~> 0.13.4.pre', :require => false
 end
@@ -99,12 +101,6 @@ inside app_name do
   run 'rake db:create:all'
 end
 
-
-ROOT = File.expand_path('../template', __FILE__)
-Dir.glob(File.join(ROOT, '**/*')).select{|f|File.file?(f)}.each do |template|
-  destination_filename = template.sub("#{ROOT}/",'')
-  create_file(destination_filename, File.read(template))
-end
 
 ## RSpec all the things
 
@@ -197,8 +193,8 @@ END
 
 environment generators_configuration
 
-required_recipes = %w(capistrano spec_ext)
-required_recipes.each {|required_recipe| apply recipe(required_recipe)}
+#required_recipes = %w(capistrano spec_ext)
+#required_recipes.each {|required_recipe| apply recipe(required_recipe)}
 
 run 'cp config/database.yml config/database.yml.example'
 run 'cp config/environments/development.rb config/environments/integ.rb'
