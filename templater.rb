@@ -68,7 +68,7 @@ git :init
 ## GEMFILE STUFF
 gem 'haml-rails'
 gem 'mysql2'
-#gem 'selections', '~> 0.2.2'
+gem 'selections', :git => 'https://github.com/nigelr/selections.git'
 
 gem 'capistrano', '~> 2.0'
 gem 'rvm-capistrano', '~> 1.4.4'
@@ -78,13 +78,13 @@ gem 'cancan'
 
 gem 'bootstrap-sass'
 
-gem 'kitestrings', :path => "~/personal/kitestrings"
+gem 'kitestrings', :path => "~/Projects/kitestrings"
 
 gem_group :development, :test do
   gem 'awesome_print'
   gem 'capybara'
   gem 'factory_girl_rails'
-  #gem 'fracture'
+  gem 'fracture'
   gem 'database_cleaner'
   gem 'hirb'
   gem 'rspec-rails'
@@ -128,6 +128,7 @@ generate 'cancan:ability'
 # start selections
 
 generate 'selections_scaffold'
+generate 'kitestrings:install'
 
 # Start Fracture
 append_file 'config/boot.rb', <<-EOF
@@ -197,6 +198,7 @@ environment generators_configuration
 #required_recipes.each {|required_recipe| apply recipe(required_recipe)}
 
 run 'cp config/database.yml config/database.yml.example'
+run 'cp config/database.yml config/database.yml.server'
 run 'cp config/environments/development.rb config/environments/integ.rb'
 run 'cp config/environments/development.rb config/environments/uat.rb'
 
