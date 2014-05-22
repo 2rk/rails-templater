@@ -78,7 +78,7 @@ gem 'cancan'
 
 gem 'bootstrap-sass'
 
-gem 'kitestrings', :path => "~/Projects/kitestrings"
+gem 'kitestrings', :git => 'https://github.com/2rk/kitestrings.git'
 
 gem_group :development, :test do
   gem 'awesome_print'
