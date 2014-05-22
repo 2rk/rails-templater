@@ -76,9 +76,7 @@ gem 'rvm-capistrano', '~> 1.4.4'
 gem 'devise'
 gem 'cancan'
 
-gem_group :assets do
-  gem 'bootstrap-sass'
-end
+gem 'bootstrap-sass'
 
 gem_group :development, :test do
   gem 'awesome_print'
