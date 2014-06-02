@@ -1,6 +1,0 @@
-.page-header
-  %h1 Editing <%= singular_table_name %>
-.row
-  .col-md-12
-    = render 'form'
-    = link_to 'Cancel', <%= singular_table_name %>_path(@<%= singular_table_name %>), id: :cancel_edit_<%= singular_table_name %>_link, class: 'btn btn-sm btn-warning'
