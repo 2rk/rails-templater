@@ -10,6 +10,7 @@ describe <%= controller_class_name %>Controller do
     Fracture.define_selector :cancel_new_<%= file_name %>_link
     Fracture.define_selector :edit_<%= file_name %>_link
     Fracture.define_selector :cancel_edit_<%= file_name %>_link
+    <%= controller_class_name %>Controller.any_instance.stub(<%= file_name %>_params: {})
   end
 
   context 'not logged in' do
@@ -59,10 +60,7 @@ describe <%= controller_class_name %>Controller do
 
     describe 'POST create' do
       context 'valid' do
-        before do
-          <%= class_name %>.any_instance.stub(:valid?).and_return(true)
-          post :create
-        end
+        before { post :create }
 
         it { should redirect_to <%= file_name %>_path(<%= class_name %>.last) }
         it { should assign_to(:<%= file_name %>).with(<%= class_name %>.last) }
