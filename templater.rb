@@ -84,6 +84,8 @@ gem_group :development, :test do
   gem 'fracture'
   gem 'database_cleaner'
   gem 'hirb'
+  # dont use rspec 3
+  gem 'rspec', '~> 2.14'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'timecop'
