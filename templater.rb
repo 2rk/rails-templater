@@ -195,8 +195,10 @@ environment generators_configuration
 
 run 'cp config/database.yml config/database.yml.example'
 run 'cp config/database.yml config/database.yml.server'
-run 'cp config/environments/development.rb config/environments/integ.rb'
-run 'cp config/environments/development.rb config/environments/uat.rb'
+run 'cp config/environments/production.rb config/environments/integ.rb'
+run 'cp config/environments/production.rb config/environments/uat.rb'
+inject_into_file 'config/environments/development.rb', "\n\s\sconfig.action_controller.action_on_unpermitted_parameters = :raise\n", after: "Rails.application.configure do\n"
+inject_into_file 'config/environments/test.rb', "\n\s\sconfig.action_controller.action_on_unpermitted_parameters = :raise\n", after: "Rails.application.configure do\n"
 
 git :add => "."
 git :commit => "-m 'Initial commit'"
