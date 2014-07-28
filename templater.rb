@@ -65,17 +65,17 @@ git :init
 ## GEMFILE STUFF
 gem 'haml-rails'
 gem 'mysql2'
-gem 'selections', :git => 'https://github.com/nigelr/selections.git'
+gem 'selections'
 
 gem 'capistrano', '~> 2.0'
 gem 'rvm-capistrano', '~> 1.4.4'
 
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 
 gem 'bootstrap-sass'
 
-gem 'kitestrings', :git => 'https://github.com/2rk/kitestrings.git'
+gem 'kitestrings'
 
 gem_group :development, :test do
   gem 'awesome_print'
@@ -89,7 +89,6 @@ gem_group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'timecop'
-  gem 'zeus', '~> 0.13.4.pre', :require => false
 end
 
 inside app_name do
@@ -184,7 +183,8 @@ inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include LogCanCanErrors, :
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include RequestAdditions, :type => :request\n", after: "RSpec.configure do |config|\n"
 append_file 'db/seeds.rb', "\n\s\sRake::Task['db:fixtures:load'].invoke\n"
 comment_lines 'spec/spec_helper.rb', /\'rspec\/autorun\'/
-
+# Add common lets
+create_file "spec/support/common_lets.rb"
 generators_configuration = <<-END
 config.generators do |g|
       g.view_specs false
