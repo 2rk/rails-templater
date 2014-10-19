@@ -182,6 +182,7 @@ inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Devise::TestHelper
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include LogCanCanErrors, :type => :controller\n", after: "RSpec.configure do |config|\n"
 inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include RequestAdditions, :type => :request\n", after: "RSpec.configure do |config|\n"
 append_file 'db/seeds.rb', "\n\s\sRake::Task['db:fixtures:load'].invoke\n"
+append_file 'db/seeds.rb', "\n\s\sRake::Task['tmp:clear'].invoke unless ENV['RAILS_ENV'] == 'test'\n"
 comment_lines 'spec/spec_helper.rb', /\'rspec\/autorun\'/
 # Add common lets
 create_file "spec/support/common_lets.rb"
