@@ -176,11 +176,6 @@ inject_into_file 'app/assets/javascripts/application.js', "\n//= require bootstr
 
 ## Gem specific Injections
 
-inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Capybara::DSL\n", after: "RSpec.configure do |config|\n"
-inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include FactoryGirl::Syntax::Methods\n", after: "RSpec.configure do |config|\n"
-inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include Devise::TestHelpers, :type => :controllers\n", after: "RSpec.configure do |config|\n"
-inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include LogCanCanErrors, :type => :controller\n", after: "RSpec.configure do |config|\n"
-inject_into_file 'spec/spec_helper.rb', "\n\s\sconfig.include RequestAdditions, :type => :request\n", after: "RSpec.configure do |config|\n"
 append_file 'db/seeds.rb', "\n\s\sRake::Task['db:fixtures:load'].invoke\n"
 append_file 'db/seeds.rb', "\n\s\sRake::Task['tmp:clear'].invoke unless ENV['RAILS_ENV'] == 'test'\n"
 comment_lines 'spec/spec_helper.rb', /\'rspec\/autorun\'/
