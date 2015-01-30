@@ -1,6 +1,5 @@
 #Create Gemspec
-create_file ".rvmrc.example", "rvm use 2.1.1@#{app_name} --create" unless ENV['SKIP_RVMRC']
-create_file ".ruby-version", "2.1.1"
+create_file ".ruby-version", "2.2"
 
 # Delete all unnecessary files
 remove_file "README"
@@ -15,48 +14,36 @@ create_file 'tmp/.gitkeep'
 
 # db stuffs
 db_string = <<EOF
-# MySQL.  Versions 4.1 and 5.0 are recommended.
-#
-# Install the MYSQL driver
-#   gem install mysql2
-#
-# Ensure the MySQL gem is defined in your Gemfile
-#   gem 'mysql2'
-#
-# And be sure to use new-style password hashing:
-#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   reconnect: false
   database: #{app_name}_development
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   reconnect: false
   database: #{app_name}_test
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
   reconnect: false
   database: #{app_name}_production
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+
 EOF
 create_file "config/database.yml", db_string
 
@@ -64,18 +51,21 @@ git :init
 
 ## GEMFILE STUFF
 gem 'haml-rails'
-gem 'mysql2'
+gem 'pg'
 gem 'selections'
-
-gem 'capistrano', '~> 2.0'
-gem 'rvm-capistrano', '~> 1.4.4'
 
 gem 'devise'
 gem 'cancancan'
 
+# TODO remove replace with Semantic UI
 gem 'bootstrap-sass'
 
 gem 'kitestrings'
+
+
+gem_group :development do
+  gem "spring-commands-rspec"
+end
 
 gem_group :development, :test do
   gem 'awesome_print'
@@ -83,9 +73,8 @@ gem_group :development, :test do
   gem 'factory_girl_rails'
   gem 'fracture'
   gem 'database_cleaner'
-  gem 'hirb'
   # dont use rspec 3
-  gem 'rspec', '~> 2.14'
+  gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'timecop'
