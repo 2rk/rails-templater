@@ -167,7 +167,7 @@ inject_into_file 'app/assets/javascripts/application.js', "\n//= require bootstr
 
 append_file 'db/seeds.rb', "\n\s\sRake::Task['db:fixtures:load'].invoke\n"
 append_file 'db/seeds.rb', "\n\s\sRake::Task['tmp:clear'].invoke unless ENV['RAILS_ENV'] == 'test'\n"
-comment_lines 'spec/spec_helper.rb', /\'rspec\/autorun\'/
+comment_lines 'spec/rails_helper.rb', /\'rspec\/autorun\'/
 # Add common lets
 create_file "spec/support/common_lets.rb"
 generators_configuration = <<-END
