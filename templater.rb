@@ -70,7 +70,7 @@ end
 gem_group :development, :test do
   gem 'awesome_print'
   gem 'capybara'
-  gem 'factory_girl_rails'
+  # gem 'factory_girl_rails'
   gem 'fracture'
   gem 'database_cleaner'
   # dont use rspec 3
