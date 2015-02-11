@@ -78,6 +78,7 @@ gem_group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'timecop'
+  gem 'rubocop', require: false
 end
 
 inside app_name do
