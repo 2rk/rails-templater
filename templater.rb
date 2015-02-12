@@ -60,7 +60,7 @@ gem 'cancancan'
 # TODO remove replace with Semantic UI
 gem 'bootstrap-sass'
 
-gem 'kitestrings', path: '../kitestrings'
+gem 'kitestrings'
 
 
 gem_group :development do
